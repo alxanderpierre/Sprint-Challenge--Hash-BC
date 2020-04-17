@@ -13,7 +13,7 @@ def get_indices_of_item_weights(weights, length, limit):
     #must do the same with the index and weight
     for index, weight in enumerate(weights):
         in2 = hash_table_retrieve(ht, limit - weight)
-    else:
+    #else:
         if in2:
             return (in2,index)
     return None
