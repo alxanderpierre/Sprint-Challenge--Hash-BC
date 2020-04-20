@@ -10,7 +10,7 @@ from timeit import default_timer as timer
 import random
 
 
-def proof_of_work(last_proof):
+def proof_of_work(last_proof, try_limit=100000000):
     """
     Multi-Ouroboros of Work Algorithm
     - Find a number p' such that the last five digits of hash(p) are equal
@@ -21,13 +21,29 @@ def proof_of_work(last_proof):
     """
 
     start = timer()
+    random.seed()
 
     print("Searching for next proof")
-    proof = 0
-    #  TODO: Your code here
+    last = git_last(last_proof)
+    # proof = random.randint(float('-inf'), float('inf'))
+    # proof = random.randint(int(float('-inf')), int(float('inf')))
+    # HOW TO GET NEG INF TO POS INF IN A RAND STATE ???? COME BACK TO THIS
+    proof = 99999999999999999
+    #for i in range(try_limit):
+        #pstr = str(proof+i)
+        # if valid_proof == last
+        # if valid_proof(last, pstr):
 
+    while not valid_proof(proof,last_proof):
+                proof +=1
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
+
+
+
+    #print("Proof found: " + str(proof) + " in " + str(timer() - start))
+    # return proof
+    #return None
 
 
 def valid_proof(last_hash, proof):
@@ -38,9 +54,10 @@ def valid_proof(last_hash, proof):
 
     IE:  last_hash: ...AE912345, new hash 12345E88...
     """
+    guess = proof.encode()
+    guess_hash = hashlib.sha256(guess).hexdigest()
+    return guess_hash[:5] == last_five
 
-    # TODO: Your code here!
-    pass
 
 
 if __name__ == '__main__':
