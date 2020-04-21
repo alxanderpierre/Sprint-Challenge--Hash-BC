@@ -9,7 +9,7 @@ from timeit import default_timer as timer
 
 import random
 
-
+#fkjsofjsdl;kj;dsfjsdlk;fjdlkfdlk
 def proof_of_work(last_proof, try_limit=100000000):
     """
     Multi-Ouroboros of Work Algorithm
